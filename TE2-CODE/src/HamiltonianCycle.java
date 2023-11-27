@@ -1,12 +1,14 @@
+// Referensi Kode: https://www.geeksforgeeks.org/hamiltonian-cycle/
+
 /* Java program for solution of Hamiltonian Cycle problem
    using backtracking */
 public class HamiltonianCycle {
-    int path[];
+    static int[] path;
 
     /* A utility function to check if the vertex v can be
        added at index 'pos'in the Hamiltonian Cycle
        constructed so far (stored in 'path[]') */
-    boolean isSafe(int v, int graph[][], int path[], int pos)
+    static boolean isSafe(int v, int graph[][], int path[], int pos)
     {
         /* Check if this vertex is an adjacent vertex of
            the previously added vertex. */
@@ -25,7 +27,7 @@ public class HamiltonianCycle {
 
     /* A recursive utility function to solve hamiltonian
        cycle problem */
-    boolean hamCycleUtil(int graph[][], int path[], int pos, int N)
+    static boolean hamCycleUtil(int graph[][], int path[], int pos, int N)
     {
         /* base case: If all vertices are included in
            Hamiltonian Cycle */
@@ -71,7 +73,7 @@ public class HamiltonianCycle {
        possible, otherwise return true and prints the path.
        Please note that there may be more than one solutions,
        this function prints one of the feasible solutions. */
-    int hamCycle(int graph[][], int N)
+    static int hamCycle(int graph[][], int N)
     {
         path = new int[N];
         for (int i = 0; i < N; i++)
@@ -93,7 +95,7 @@ public class HamiltonianCycle {
     }
 
     /* A utility function to print solution */
-    void printSolution(int path[], int N)
+    static void printSolution(int path[], int N)
     {
         System.out.println("Solution Exists: Following" +
                 " is one Hamiltonian Cycle");
@@ -104,44 +106,4 @@ public class HamiltonianCycle {
         // complete cycle
         System.out.println(" " + path[0] + " ");
     }
-
-    // driver program to test above function
-    public static void main(String args[])
-    {
-        int N = 5;
-        HamiltonianCycle hamiltonian =
-                new HamiltonianCycle();
-        /* Let us create the following graph
-           (0)--(1)--(2)
-            |   / \   |
-            |  /   \  |
-            | /     \ |
-           (3)-------(4)    */
-        int graph1[][] = {{0, 1, 0, 1, 0},
-                {1, 0, 1, 1, 1},
-                {0, 1, 0, 0, 1},
-                {1, 1, 0, 0, 1},
-                {0, 1, 1, 1, 0},
-        };
-
-        // Print the solution
-        hamiltonian.hamCycle(graph1, N);
-
-        /* Let us create the following graph
-           (0)--(1)--(2)
-            |   / \   |
-            |  /   \  |
-            | /     \ |
-           (3)       (4)    */
-        int graph2[][] = {{0, 1, 0, 1, 0},
-                {1, 0, 1, 1, 1},
-                {0, 1, 0, 0, 1},
-                {1, 1, 0, 0, 0},
-                {0, 1, 1, 0, 0},
-        };
-
-        // Print the solution
-        hamiltonian.hamCycle(graph2, N);
-    }
 }
-// This code is contributed by Abhishek Shankhadhar

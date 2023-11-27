@@ -1,15 +1,11 @@
-// Java program for the above approach
-import java.io.*;
-import java.lang.*;
-import java.util.*;
-
+// Referensi Kode : https://www.geeksforgeeks.org/hamiltonian-path-using-dynamic-programming/
 public class HamiltonianPath{
-
     // Function to check whether there
-// exists a Hamiltonian Path or not
+    // exists a Hamiltonian Path or not
     static boolean Hamiltonian_path(int adj[][], int N)
     {
         boolean dp[][] = new boolean[N][(1 << N)];
+        int path[][] = new int[N][(1 << N)];
 
         // Set all dp[i][(1 << i)] to
         // true
@@ -42,6 +38,7 @@ public class HamiltonianPath{
                             // Update dp[j][i]
                             // to true
                             dp[j][i] = true;
+                            path[j][i] = k; // Store the previous node in the path
                             break;
                         }
                     }
@@ -50,33 +47,41 @@ public class HamiltonianPath{
         }
 
         // Traverse the vertices
+        int lastNode = -1;
         for(int i = 0; i < N; i++)
         {
-
             // Hamiltonian Path exists
             if (dp[i][(1 << N) - 1])
-                return true;
+                lastNode = i;
+                break;
         }
 
-        // Otherwise, return false
-        return false;
+        if (lastNode != -1) {
+            System.out.println("Hamiltonian Path:");
+            printHamiltonianPath(path, lastNode, (1 << N) - 1);
+            return true;
+        } else {
+            System.out.println("No Hamiltonian Path found");
+            return false;
+        }
     }
 
-    // Driver Code
-    public static void main(String[] args)
-    {
-        int adj[][] = { { 0, 1, 1, 1, 0 },
-                { 1, 0, 1, 0, 1 },
-                { 1, 1, 0, 1, 1 },
-                { 1, 0, 1, 0, 0 } };
-        int N = adj.length;
+    static void printHamiltonianPath(int[][] path, int lastNode, int mask) {
+        int N = path.length;
+        int[] result = new int[N];
+        int index = N - 1;
 
-        // Function Call
-        if (Hamiltonian_path(adj, N))
-            System.out.println("YES");
-        else
-            System.out.println("NO");
+        while (mask > 0) {
+            result[index--] = lastNode;
+            int prevNode = path[lastNode][mask];
+            mask ^= (1 << lastNode);
+            lastNode = prevNode;
+        }
+
+        // Print the Hamiltonian Path
+        for (int i = 0; i < N; i++) {
+            System.out.print(result[i] + " ");
+        }
+        System.out.println();
     }
 }
-
-// This code is contributed by Kingash

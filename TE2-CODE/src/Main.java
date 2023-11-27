@@ -1,14 +1,12 @@
 public class Main {
 
     public static void doSort(int[] arr){
-//        int[] copiedArr = new int[arr.length];
-//        System.arraycopy(arr, 0, copiedArr, 0, arr.length);
 //        doRadixSort(arr);
 //        doPeekSort(copiedArr);
     }
 
     // Radix sort performance
-    public static void doRadixSort(int[] arr){
+    public static void doHamiltonianPath(int[][] arr){
 //        long radixSortStartTime = System.currentTimeMillis();
 //        Radixsort.radixSort(arr);
 //        long radixSortEndTime = System.currentTimeMillis();
@@ -21,7 +19,7 @@ public class Main {
     }
 
     // Peek sort performance
-    public static void doPeekSort(int[] arr){
+    public static void doHamiltonianCycle(int[][] arr){
 //        long peekSortStartTime = System.currentTimeMillis();
 //        Peeksort.peekSort(arr, 0, arr.length-1, 0, arr.length-1, new int[arr.length]);
 //        long peekSortEndTime = System.currentTimeMillis();
@@ -34,21 +32,25 @@ public class Main {
     }
 
     public static void main(String[] args) {
-//        // create sorted array
-//        int[] sortedArr1000 = Util.createSortedData(1000);
-//        int[] sortedArr10000 = Util.createSortedData(10000);
-//        int[] sortedArr100000 = Util.createSortedData(100000);
-//
-//        // create random array
-//        int[] randomArr1000 = Util.createRandomData(1000);
-//        int[] randomArr10000 = Util.createRandomData(10000);
-//        int[] randomArr100000 = Util.createRandomData(100000);
-//
-//        // create reversed array
-//        int[] reversedArr1000 = Util.createReversedList(1000);
-//        int[] reversedArr10000 = Util.createReversedList(10000);
-//        int[] reversedArr100000 = Util.createReversedList(100000);
-//
+        // create graph with 16 vertices
+        int[][] graph16 = Util.createGraph16Vertices();
+        HamiltonianPath.Hamiltonian_path(graph16, graph16.length);
+        HamiltonianCycle.hamCycle(graph16, graph16.length);
+
+        System.out.println("\n==================================================\n");
+
+        // create graph with 18 vertices
+        int[][] graph18 = Util.createGraph18Vertices();
+        HamiltonianPath.Hamiltonian_path(graph18, graph18.length);
+        HamiltonianCycle.hamCycle(graph18, graph18.length);
+
+        System.out.println("\n==================================================\n");
+
+        // create graph with 18 vertices
+        int[][] graph20 = Util.createGraph20Vertices();
+        HamiltonianPath.Hamiltonian_path(graph20, graph20.length);
+        HamiltonianCycle.hamCycle(graph20, graph20.length);
+        
 //        System.out.println("==================================================");
 //        System.out.println("Data Array Sorted");
 //        System.out.println("==================================================");
