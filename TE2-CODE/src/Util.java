@@ -2,6 +2,7 @@ import java.util.Random;
 
 public class Util {
 
+    // Method untuk generate graph dengan 16 verteks
     static int[][] createGraph16Vertices() {
         int N = 16;
         int[][] graph = new int[N][N];
@@ -72,6 +73,7 @@ public class Util {
         return graph;
     }
 
+    // Method untuk generate graph dengan 18 verteks
     static int[][] createGraph18Vertices() {
         int N = 18;
         int[][] graph = new int[N][N];
@@ -150,6 +152,7 @@ public class Util {
         return graph;
     }
 
+    // Method untuk generate graph dengan 20 verteks
     static int[][] createGraph20Vertices() {
         int N = 20;
         int[][] graph = new int[N][N];
