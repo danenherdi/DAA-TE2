@@ -50,7 +50,7 @@ public class HamiltonianCycle {
 
 
     // Method untuk membuat Hamiltonian Cycle dengan memanggil util rekursif-nya
-    public static int hamCycle(int graph[][], int N)
+    public static void hamCycle(int graph[][], int N)
     {
         path = new int[N];
         for (int i = 0; i < N; i++)
@@ -62,11 +62,9 @@ public class HamiltonianCycle {
         if (hamCycleUtil(graph, path, 1, N) == false)
         {
             System.out.println("\nTidak ada Hamiltonian Cycle");
-            return 0;
         }
 
         printSolution(path, N);
-        return 1;
     }
 
     // Method untuk mencetak Hamiltonian cycle
